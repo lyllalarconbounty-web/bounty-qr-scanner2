@@ -1,2 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bounty QR Scanner</title>
+</head>
+
+<body>
+
+<h1>📷 BOUNTY QR SCANNER</h1>
+
+<p>GitHub Pages is working!</p>
+
+<button onclick="testCamera()">
+    TEST CAMERA
+</button>
+
+<script>
+
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbzntlCRfu44DavszPvS7dUuwKEB6Xu4cYvIx08q7H8OUUzJi3tzC0VfhmY02QV1VrI0/exec";
+"https://script.google.com/macros/s/AKfycbzntlCRfu44DavszPvS7dUuwKEB6Xu4cYvIx08q7H8OUUzJi3tzC0VfhmY02QV1VrI0/exec";
+
+
+async function testCamera() {
+
+    try {
+
+        const stream =
+            await navigator.mediaDevices.getUserMedia({
+                video: {
+                    facingMode: "environment"
+                },
+                audio: false
+            });
+
+        alert("✅ CAMERA WORKS!");
+
+        stream.getTracks().forEach(
+            track => track.stop()
+        );
+
+    }
+
+    catch(error) {
+
+        alert(
+            "❌ CAMERA ERROR\n\n" +
+            error.name +
+            "\n" +
+            error.message
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
